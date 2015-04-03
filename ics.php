@@ -27,7 +27,7 @@ class ics {
     public function generate($startDate, $weight, $loseEachWeek, $targetWeight) {
         $returnICS = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KARMA LLC//NONSGML loss-ical-gen//EN\r\nCALSCALE:GREGORIAN\r\n";
         $loseEachDay = $loseEachWeek/7;
-        $currentDate = strtotime($startDate);
+        $currentDate = strtotime($startDate."-12:00");
         $currentWeight = $weight;
         while ($currentWeight > $targetWeight) {
             $location = "The GYM";
