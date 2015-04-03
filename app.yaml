@@ -1,8 +1,10 @@
 application: loss-cal-gen
-version: 1
+version: losscalgen-2015-04-03
 runtime: php
 api_version: 1
 
 handlers:
-- url: /.*
+- url: /
+  script: index.php
+- url: /index\.php
   script: index.php
