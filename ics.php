@@ -24,13 +24,24 @@ class ics {
     }
 
     //returns ics for values
-    public function generate($startDate) {
-        $returnICS = "BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//hacksw/handcal//NONSGML v1.0//EN
-CALSCALE:GREGORIAN
-BEGIN:VEVENT
-";
+    public function generate($startDate, $weight, $loseEachWeek, $targetWeight) {
+        $returnICS = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//KARMA LLC//NONSGML loss-ical-gen//EN\r\nCALSCALE:GREGORIAN\r\n";
+        $loseEachDay = $loseEachWeek/7;
+        $currentDate = strtotime($startDate);
+        $currentWeight = $weight;
+        while ($currentWeight > $targetWeight) {
+            $location = "The GYM";
+            $uri = "";
+            $summary = "Goal: ".round($currentWeight,1);
+            $description = $summary;
+            $returnICS=$returnICS."BEGIN:VEVENT\r\nDTEND:".$this->dateToCal($currentDate)."\r\nUID:".uniqid()."\r\nDTSTAMP:".$this->dateToCal(time())."\r\nLOCATION:".$this->escapeString($location).
+                "\r\nDESCRIPTION:".$this->escapeString($description)."\r\nURL;VALUE=URI:".$this->escapeString($uri).
+                "\r\nSUMMARY:".$this->escapeString($summary)."\r\nDTSTART:".$this->dateToCal($currentDate)."\r\nEND:VEVENT\r\n";
+            //properly decrement values for next iteration
+            $currentDate = strtotime("+1 day",$currentDate);
+            $currentWeight = $currentWeight-$loseEachDay;
+        }
+        $returnICS=$returnICS."END:VCALENDAR\r\n";
         return $returnICS;
     }
 
