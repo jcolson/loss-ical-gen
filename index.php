@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
      $weightErr = "Weight is required";
    } else {
        // check if name only contains letters and whitespace
-       if (!preg_match("/^[0-9]*$/", $weight)) {
+       if (!preg_match("/^[0-9]*\.[0-9]*$/", $weight)) {
            $weightErr = "Only numbers allowed";
        }
    }
@@ -24,8 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
         $loseEachWeekErr = "Lose each week is required";
     } else {
         // check if name only contains letters and whitespace
-        if (!preg_match("/^[0-9]*$/", $weight)) {
-            $weightErr = "Only numbers allowed";
+        if (!preg_match("/^[0-9]*\.[0-9]*$/", $loseEachWeek)) {
+            $loseEachWeekErr = "Only numbers allowed";
         }
     }
     $targetWeight = test_input($_POST["targetWeight"].$_GET["targetWeight"]);
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
         $targetWeightErr = "Target Weight is required";
     } else {
         // check if name only contains letters and whitespace
-        if (!preg_match("/^[0-9]*$/", $weight)) {
+        if (!preg_match("/^[0-9]*\.[0-9]*$/", $targetWeight)) {
             $targetWeightErr = "Only numbers allowed";
         }
     }
