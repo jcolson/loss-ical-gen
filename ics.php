@@ -44,5 +44,4 @@ class ics {
         $returnICS=$returnICS."END:VCALENDAR\r\n";
         return $returnICS;
     }
-
 }
