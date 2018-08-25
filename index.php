@@ -77,7 +77,7 @@ if ($icsOutput == "true" && $isErr == false) {
         </style>
     <?php
     if ($isErr == false) {
-      echo "<b>This is the ICS url you should use.  Right click on it and save the url - then 'subscribe' to this URL in your calendar of choice (google, ical, etc).</b";
+      echo "<b>This is the ICS url you should use.  Right click on it and save the url - then 'subscribe' to this URL in your calendar of choice (google, ical, etc).</b>";
       echo "<a href=\"/loss-ical-gen/?icsOutput=true&startDate=" . $startDate . "&weight=" . $weight . "&loseEachWeek=" . $loseEachWeek . "&targetWeight=" . $targetWeight . "\">ICS URL</a><br/>";
     }
     ?>
