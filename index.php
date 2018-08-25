@@ -83,7 +83,7 @@ if ($icsOutput == "true" && $isErr == false) {
 
     <p><span class="error">* required field.</span></p>
 
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form method="post">
         Date to start: <input type="date" name="startDate" value="<?php echo $startDate; ?>">
         <span class="error">* <?php echo $startDateErr; ?></span>
         <br><br>
@@ -103,7 +103,7 @@ if ($icsOutput == "true" && $isErr == false) {
     <?php
     if ($isErr == false) {
       echo "<h2>ICS URL TO USE:</h2>";
-      echo "<a href=\"" . curPageURL() . "?icsOutput=true&startDate=" . $startDate . "&weight=" . $weight . "&loseEachWeek=" . $loseEachWeek . "&targetWeight=" . $targetWeight . "\">ICS URL</a>";
+      echo "<a href=\"/loss-ical-gen/?icsOutput=true&startDate=" . $startDate . "&weight=" . $weight . "&loseEachWeek=" . $loseEachWeek . "&targetWeight=" . $targetWeight . "\">ICS URL</a>";
     }
 }
 ?>
