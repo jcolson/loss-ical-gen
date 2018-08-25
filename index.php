@@ -70,17 +70,17 @@ if ($icsOutput == "true" && $isErr == false) {
 } else {
     ?>
     <!DOCTYPE HTML>
-    <html>
-    <head>
         <style>
             .error {
                 color: #FF0000;
             }
         </style>
-    </head>
-    <body>
-    <h2>Loss Calender Generator</h2>
-
+    <?php
+    if ($isErr == false) {
+      echo "<h2>ICS URL TO USE:</h2>";
+      echo "<a href=\"/loss-ical-gen/?icsOutput=true&startDate=" . $startDate . "&weight=" . $weight . "&loseEachWeek=" . $loseEachWeek . "&targetWeight=" . $targetWeight . "\">ICS URL</a>";
+    }
+    ?>
     <p><span class="error">* required field.</span></p>
 
     <form method="post">
@@ -98,12 +98,6 @@ if ($icsOutput == "true" && $isErr == false) {
         <br><br>
         <input type="submit" name="submit" value="Submit">
     </form>
-    </body>
-    </html>
     <?php
-    if ($isErr == false) {
-      echo "<h2>ICS URL TO USE:</h2>";
-      echo "<a href=\"/loss-ical-gen/?icsOutput=true&startDate=" . $startDate . "&weight=" . $weight . "&loseEachWeek=" . $loseEachWeek . "&targetWeight=" . $targetWeight . "\">ICS URL</a>";
-    }
 }
 ?>
